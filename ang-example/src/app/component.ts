@@ -48,4 +48,11 @@ export class ProductComponent {
             return gte;
         }
     }
+
+    getClassMap(key: number): Object {
+        return {
+            "text-center bg-danger": this.model.getProduct(key)?.name  == "Kayak",
+            "bg-info": !this.isPriceGTE(key, 50)
+        }
+    }
 }

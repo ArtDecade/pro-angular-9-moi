@@ -23,6 +23,30 @@ export class Model {
         }
     }
 
+    getProductName(id: number): string {
+        if(!this.getProduct(id)) {
+            return "No product for this ID number."
+        } else {
+            if(!this.getProduct(id)?.name){
+                return "The product has no name.";
+            } else {
+                return this.getProduct(id)?.name as string;
+            }
+        }
+    }
+
+    getProductPrice(id: number) : number {
+        if(!this.getProduct(id)) {
+            return 0;
+        } else {
+            if(!this.getProduct(id)?.price){
+                return 0;
+            } else {
+                return this.getProduct(id)?.price as number;
+            }
+        }
+    }
+
     saveProduct(product: Product) {
         if(typeof product.id == "undefined") {
             product.id = 0;

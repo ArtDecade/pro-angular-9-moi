@@ -1,14 +1,14 @@
-<div [class] = "'text-white m-2 p-2 ' + getClasses(4)">
-    Name:  {{ (model.getProduct(4)?.name || 'None') }}
-</div>
-<div class = "p-2"
-    [class.bg-success]="isPriceGTE(4,50)"
-    [class.bg-info]="isPriceGTE(4,50)" >
-    Name:  {{ (model.getProduct(4)?.name || 'None') }}
-</div>
-<div class="form-group m-2">
-    <label>Name</label>
-    <input class="form-control" [value]="model.getProduct(1)?.name || 'None'" />
+<div class="text-white m-2">
+    <div class="p-2" [ngClass] = "getClassMap(1)">
+        The first product is {{ model.getProductName(1) }}
+    </div>
+    <div class="p-2" [ngClass] = "getClassMap(2)">
+        The second  product is {{ model.getProductName(2) }}
+    </div>
+    <div class = "p-2" [ngClass] = "{'bg-success': !isPriceGTE(3,50),
+                                    'bg-info': isPriceGTE(3,50)}">
+       The third product is {{ model.getProductName(3) }}
+    </div>
 </div>
 <table class="table table-sm table-bordered table-striped mt-2">
     <tr>
