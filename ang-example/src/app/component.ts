@@ -22,7 +22,19 @@ export class ProductComponent {
         return "p-2 " + (pr< 50 ? "bg-info" : "bg-warning");
     }
 
-    
+    getStyles(key: number) {
+        let product = this.model.getProduct(key);
+        if(!product) {
+            return null;
+        } else {
+            return {
+                fontSize: "30px",
+                "margin.px": 100,
+                color: this.isPriceGTE(key, 50) ? "red" : "green"
+            }
+        }
+
+    }
     isPriceGTE (productID: number | undefined, price: number | undefined): boolean {
         let prod: Product | undefined;
         if(!productID || !price) {
@@ -55,4 +67,9 @@ export class ProductComponent {
             "bg-info": !this.isPriceGTE(key, 50)
         }
     }
+
+
+
+    fontSizeWithUnits: string = "30px";
+    fontSizeWithoutUnits: string = "30";
 }
