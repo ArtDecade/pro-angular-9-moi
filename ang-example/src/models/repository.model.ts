@@ -52,4 +52,5 @@ export class Model {
         }
         return candidate;
     }
+
 }
