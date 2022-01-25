@@ -9,7 +9,15 @@ import { Model } from "src/models/repository.model";
 export class ProductComponent {
     model: Model = new Model();
 
-    getClasses(): string {
-        return this.model.getProducts().length == 5 ? "bg-success" : "bg-warning";
+    getClasses(key: number): string {
+        let pr:number;
+        let product = this.model.getProduct(key);
+        
+        if(product?.price) {
+            pr = product.price;
+        } else {
+            pr = 0;
+        }
+        return "p-2 " + (pr< 50 ? "bg-info" : "bg-warning");
     }
 }
