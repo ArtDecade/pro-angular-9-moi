@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ApplicationRef, Component } from "@angular/core";
 import { Model } from "src/models/repository.model";
 import { Product } from "src/models/product.model";
 
@@ -9,6 +9,20 @@ import { Product } from "src/models/product.model";
 
 export class ProductComponent {
     model: Model = new Model();
+
+    constructor(ref: ApplicationRef) {
+        (<any>window).appRef = ref;
+        (<any>window).model = this.model;
+    }
+
+    getProductByPosition(position: number): Product {
+        return this.model.getProducts()[position];
+    }
+
+    getClassesByPosition(position: number): string {
+        let product = this.getProductByPosition(position);
+        return "p-2 " + (!this.isPriceGTE(product.id, 50) ? "bg-info" : "bg-warning");
+    }
 
     getClasses(key: number): string {
         let pr:number;
@@ -67,8 +81,6 @@ export class ProductComponent {
             "bg-info": !this.isPriceGTE(key, 50)
         }
     }
-
-
 
     fontSizeWithUnits: string = "30px";
     fontSizeWithoutUnits: string = "30";
