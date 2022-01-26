@@ -1,20 +1,11 @@
 <div class="text-white m-2">
-    <div [ngClass]="getClassesByPosition(0)">
-        The <span [ngStyle]="getStyles(1)">first</span> product is {{ getProductByPosition(0).name }}.
+    <div class="bg-info p-2">
+        There are {{ getProductCount() }} products.
     </div>
-    <div [ngClass]="getClassesByPosition(1)">
-        The <span [ngStyle]="getStyles(2)">second</span> product is {{ getProductByPosition(1).name }}.
+    <div *ngIf="getProductCount() > 4" class="bg-info p-2 mt-1">
+        There are more than 4 products in the model.
     </div>
-    <div [ngClass]="{'bg-success': !isPriceGTE(3,50),
-                                    'bg-info': isPriceGTE(3,50)}">
-       The third product is {{ model.getProductName(3) }}
+    <div *ngIf="getProductByPosition(0).name != 'Kayak'" class="bg-info p-2 mt-1">
+        The first product isn't a Kayak.
     </div>
 </div>
-<table class="table table-sm table-bordered table-striped mt-2">
-    <tr>
-        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-    </tr>
-    <tr>
-        <td [attr.colspan]="model.getProducts().length"></td>
-    </tr>
-</table>
