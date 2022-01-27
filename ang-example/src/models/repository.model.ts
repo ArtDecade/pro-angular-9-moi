@@ -11,6 +11,11 @@ export class Model {
         this.dataSource.getData().forEach(p => this.products.push(p));
     }
 
+    swapProduct() {
+        let p = this.products.shift();
+        this.products.push(new Product(p?.id, p?.name, p?.category, p?.price));
+    }
+
     getProducts(): Product[] {
         return this.products;
     }
