@@ -1,4 +1,4 @@
-import { ApplicationRef, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { Product } from "src/models/product.model";
 import { Model } from "src/models/repository.model";
 
@@ -9,19 +9,6 @@ import { Model } from "src/models/repository.model";
 
 export class ProductComponent {
     model: Model = new Model();
-
-    constructor(ref: ApplicationRef) {
-        (<any>window).appRef = ref;
-        (<any>window).model = this.model;
-    }
-
-    getKey(index: number, product: Product) {
-        return product.id;
-    }
-
-    getProductByPosition(position: number): Product {
-        return this.model.getProducts()[position];
-    }
 
     getProduct(key: number): Product {
         let p = this.model.getProduct(key);
@@ -36,10 +23,15 @@ export class ProductComponent {
         return this.model.getProducts();
     }
     
-    getProductCount(): number {
-        return this.model.getProducts().length;
+    selectedProduct: Product = new Product();
+
+    getSelected(product: Product): boolean {
+        return product.name == this.selectedProduct.name;
     }
 
-    targetName: string = "Kayak";
+    clearSelected() {
+        this.selectedProduct = new Product();
+    }
+
 
 }
