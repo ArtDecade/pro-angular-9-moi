@@ -22,13 +22,6 @@ export class ProductComponent {
     getProducts(): Product[] {
         return this.model.getProducts();
     }
-<<<<<<< HEAD
-
-    selectedProduct: string | undefined = "None";
-
-    getSelected(product: Product): boolean {
-        return product.name == this.selectedProduct;
-=======
     
     selectedProduct: Product = new Product();
 
@@ -42,6 +35,5 @@ export class ProductComponent {
 
     specifyProductName(prodName: string) {
         this.selectedProduct.name = prodName;
->>>>>>> 8dc5a88466d9a063542ee4505968069d2d8be39c
     }
 }
