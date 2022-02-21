@@ -1,4 +1,4 @@
-import { ApplicationRef, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { Product } from "src/models/product.model";
 import { Model } from "src/models/repository.model";
 
@@ -22,10 +22,26 @@ export class ProductComponent {
     getProducts(): Product[] {
         return this.model.getProducts();
     }
+<<<<<<< HEAD
 
     selectedProduct: string | undefined = "None";
 
     getSelected(product: Product): boolean {
         return product.name == this.selectedProduct;
+=======
+    
+    selectedProduct: Product = new Product();
+
+    getSelected(product: Product): boolean {
+        return product.name == this.selectedProduct.name;
+    }
+
+    clearSelected() {
+        this.selectedProduct = new Product();
+    }
+
+    specifyProductName(prodName: string) {
+        this.selectedProduct.name = prodName;
+>>>>>>> 8dc5a88466d9a063542ee4505968069d2d8be39c
     }
 }
