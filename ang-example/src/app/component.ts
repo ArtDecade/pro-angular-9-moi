@@ -33,5 +33,7 @@ export class ProductComponent {
         this.selectedProduct = new Product();
     }
 
-
+    specifyProductName(prodName: string) {
+        this.selectedProduct.name = prodName;
+    }
 }
