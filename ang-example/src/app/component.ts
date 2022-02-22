@@ -33,7 +33,11 @@ export class ProductComponent {
         this.selectedProduct = new Product();
     }
 
-    specifyProductName(prodName: string) {
-        this.selectedProduct.name = prodName;
+    specifyProductName(target: any) {
+        if("value" in target) {
+            this.selectedProduct.name = target.value; }
+        else {
+            this.selectedProduct.name = "None";
+        }
     }
 }
