@@ -40,4 +40,13 @@ export class ProductComponent {
             this.selectedProduct.name = "None";
         }
     }
+
+    getInputContents(target: any): string {
+        if("value" in target) {
+            return target.value;
+        }
+        else {
+            return "None";
+        }
+    }
 }

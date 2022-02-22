@@ -1,6 +1,6 @@
 <div class="m-2">
     <div class="bg-info text-white p-2">
-        Selected Product: {{selectedProduct?.name || '(None)'}}
+        Selected Product: {{product.value|| '(None)'}}
     </div>
     <table class="table table-sm table-bordered" (mouseleave)="clearSelected()">
         <tr>
@@ -10,8 +10,9 @@
             <th>Price</th> 
         </tr>
         <tr *ngFor="let item of getProducts(); let i = index" 
-            [class.bg-info]="getSelected(item)">
-            <td class="text-center" (mouseover)="selectedProduct=item">{{i+1}}</td>
+            (mouseover)="product.value=item.name || 'None'"
+            [class.bg-info]="product.value==item.name">
+            <td class="text-center" >{{i+1}}</td>
             <td>{{item.name}}</td>
             <td>{{item.category}}</td>
             <td>{{item.price}}</td>
@@ -19,6 +20,6 @@
     </table>
     <div class="form-group">
         <label>Product Name</label>
-        <input class="form-control" (input)="specifyProductName($event.target)">
+        <input #product class="form-control" (input)="false">
     </div>
 </div>
