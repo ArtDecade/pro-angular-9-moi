@@ -25,8 +25,10 @@ export class ProductComponent {
     
     selectedProduct: Product = new Product();
 
+    selectedProductName: string = "None";
+
     getSelected(product: Product): boolean {
-        return product.name == this.selectedProduct.name;
+        return product.name == this.selectedProductName;
     }
 
     clearSelected() {
